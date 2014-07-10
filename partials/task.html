@@ -1,0 +1,42 @@
+<div class="widget-box" id="recent-box" ng-controller="userController">
+<div class="widget-header header-color-blue">
+<div class="row">
+<div class="col-sm-6">
+<h4 class="bigger lighter">
+	<i class="glyphicon glyphicon-align-justify"></i>&nbsp;
+	USER MANAGER
+</h4>
+</div>
+<div class="col-sm-3">
+<button ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin"><i class="glyphicon  glyphicon-plus"></i>&nbsp;Add New User</button>
+</div>
+<div class="col-sm-3">
+
+<input type="text" ng-model="filterUser" class="form-control search header-elements-margin" placeholder="Filter Tasks">
+
+</div>
+</div></div>
+<div class="widget-body ">
+<form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
+<div class="form-actions">
+<div class="input-group">
+<input type="text" class="form-control" name="comment" ng-model="userInput" placeholder="Add New Task" ng-focus="addNewClicked">
+<div class="input-group-btn">
+<button class="btn btn-default" type="submit" ng-click="addUser(userInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Task</button>
+</div>
+</div>
+</div>
+</form>
+<div class="task">
+	<label class="checkbox" ng-repeat="user in users">
+    <input 
+	type="checkbox"
+	value="{{user.DROIT}}"
+	ng-checked="user.DROIT==2"
+	ng-click="toggleDroit(user.ID,user.DROIT, user.USER)"/> 
+	<span ng-class="{strike:task.DROIT==2}">{{user.USER}} [{{user.ID}}]</span>
+	<a ng-click="deleteUser(user.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
+    </label>
+</div>
+</div>
+</div>
