@@ -19,22 +19,31 @@
 <div class="widget-body ">
 <form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
 <div class="form-actions">
-<div class="input-group">
-<input type="text" class="form-control" name="comment" ng-model="userInput" placeholder="Add New Task" ng-focus="addNewClicked">
-<div class="input-group-btn">
-<button class="btn btn-default" type="submit" ng-click="addUser(userInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Task</button>
-</div>
-</div>
+
+   <div class="input-group">
+        <input type="text" class="form-control" name="comment" ng-model="userInput" placeholder="Add New Task" ng-focus="addNewClicked">
+         
+        <input name="motpasse2" ng-model="passwordInput" type="password" class="form-control"> 
+            
+            <select ng-model="droits" name="choixDroits" ng-focus="addNewClicked" >
+                  <option value="0" ng-select>-- choisir les droits --</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+            </select>
+           
+           
+        
+        <div class="input-group-btn">
+        <button class="btn btn-default" type="submit" ng-click="addUser(userInput,droits,passwordInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Task</button>
+        </div>
+    </div>
 </div>
 </form>
 <div class="task">
-	<label class="checkbox" ng-repeat="user in users">
-    <input 
-	type="checkbox"
-	value="{{user.DROIT}}"
-	ng-checked="user.DROIT==2"
-	ng-click="toggleDroit(user.ID,user.DROIT, user.USER)"/> 
-	<span ng-class="{strike:task.DROIT==2}">{{user.USER}} [{{user.ID}}]</span>
+	<label class="checkbox" ng-repeat="user in user">
+    <input type="checkbox" value="{{user.DROIT}}" ng-checked="user.DROIT==2" ng-click="toggleDroit(user.ID,user.DROIT,user.USERNAME,user.PASSWORD,user.ID_CONFIG)"/> 
+	
+	<span ng-class="{strike:user.DROIT==2}">{{user.USER}} [{{user.ID}}], {{user.USERNAME}}, ({{user.DROIT}})</span>
 	<a ng-click="deleteUser(user.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
     </label>
 </div>
