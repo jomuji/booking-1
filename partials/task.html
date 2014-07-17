@@ -34,7 +34,7 @@
            
         
         <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" ng-click="addUser(userInput,droits,passwordInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Task</button>
+        <button class="btn btn-default" type="submit" ng-click="addUser(userInput,droits,passwordInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New User</button>
         </div>
     </div>
 </div>
@@ -43,7 +43,7 @@
 	<label class="checkbox" ng-repeat="user in user">
     <input type="checkbox" value="{{user.DROIT}}" ng-checked="user.DROIT==2" ng-click="toggleDroit(user.ID,user.DROIT,user.USERNAME,user.PASSWORD,user.ID_CONFIG)"/> 
 	
-	<span ng-class="{strike:user.DROIT==2}">{{user.USER}} [{{user.ID}}], {{user.USERNAME}}, ({{user.DROIT}})</span>
+	<span ng-class="{strike:user.DROIT==2}">{{user.USER}} [{{user.ID}}], {{user.USERNAME}}, ({{user.DROIT}}), ({{user.PASSWORD}})</span>
 	<a ng-click="deleteUser(user.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
     </label>
 </div>

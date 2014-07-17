@@ -15,12 +15,12 @@ app.controller('userController', function($scope, $http) {
     
     
   $scope.addUser = function (user,droit,motpasse2) {
-    $http.post("ajax/addUser.php?user="+user+"&droit="+droit).success(function(data){
+    $http.post("ajax/addUser.php?user="+user+"&droit="+droit, {'password': $scope.passwordInput}).success(function(data){
        
         getUser();
         $scope.userInput = "";
         $scope.droits = "";
-        $scope.passwordInput = "";
+        //$scope.passwordInput = "";
         
         });
   };
